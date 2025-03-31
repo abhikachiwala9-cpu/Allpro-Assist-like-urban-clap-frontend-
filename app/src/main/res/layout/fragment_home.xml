@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    tools:context=".fragment.HomeFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/white"
+
+    android:orientation="vertical">
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvuser"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="15sp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/tvuser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            />
+
+            <ImageView
+                android:id="@+id/imgcart"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@mipmap/cart3"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:contentDescription="Cart Icon"/>
+        </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="20dp">
+
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#acbac5"
+        android:hint="What are you looking for ?"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:id="@+id/etsearch"
+        android:background="@drawable/css"
+        android:textSize="15dp"
+        android:drawableStart="@drawable/search"
+        android:drawablePadding="10dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+<!--       <com.google.android.material.textfield.TextInputLayout-->
+<!--           android:layout_width="match_parent"-->
+<!--           android:hint="What are you looking for ?"-->
+<!--           android:layout_margin="10dp"-->
+
+<!--           android:layout_height="wrap_content">-->
+
+
+
+<!--           <com.google.android.material.textfield.TextInputEditText-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_marginBottom="8dp"-->
+<!--               android:drawableEnd="@mipmap/search"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               ></com.google.android.material.textfield.TextInputEditText>-->
+<!--       </com.google.android.material.textfield.TextInputLayout>-->
+
+
+
+    <!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        app:cardElevation="10dp"-->
+<!--        app:cardCornerRadius="20dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        >-->
+<!--        <com.denzcoskun.imageslider.ImageSlider-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp"-->
+<!--            app:iss_auto_cycle="true"-->
+<!--            android:id="@+id/imgslider"-->
+<!--            android:layout_marginBottom="30dp"-->
+<!--            />-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"/>
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sh"
+        android:layout_marginTop="-20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
+
+
+        <TextView
+            android:id="@+id/tvSeeCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:drawableEnd="@drawable/baseline_arrow_forward_black"
+            android:drawablePadding="270dp"
+            android:layout_gravity="start"
+            android:textSize="20sp"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            />
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcylCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="120dp"-->
+<!--                app:cardCornerRadius="15dp"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                app:cardElevation="12dp"-->
+<!--                android:layout_height="120dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@mipmap/wosaloon"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Women Salon"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="120dp"-->
+<!--                app:cardCornerRadius="15dp"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                app:cardElevation="12dp"-->
+<!--                android:layout_height="120dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@mipmap/saloon"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Men Salon"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/cardac"-->
+<!--                android:layout_width="120dp"-->
+<!--                app:cardCornerRadius="15dp"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginRight="12dp"-->
+<!--                app:cardElevation="12dp"-->
+<!--                android:layout_height="120dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@mipmap/ac"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Air condition"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/black"/>-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SubCategory"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcylSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"/>
+
+
+
+
+
+
+<!--    </LinearLayout>-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_margin="5dp"
+
+            android:background="@mipmap/banner"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnexplore"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/black"
+                android:layout_marginTop="115dp"
+                android:layout_marginRight="240dp"
+                android:text="Explore Now">
+
+            </Button>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service's"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/primary"
+            android:layout_gravity="start"/>
+
+        <TextView
+            android:id="@+id/seall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See all>>"
+            android:layout_marginEnd="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginLeft="300dp"
+            android:textColor="@color/primary"
+            android:layout_gravity="end"
+            android:layout_marginTop="-20dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcylProd"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            >
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Woman's Service   >>"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="20sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:textColor="@color/primary"-->
+<!--            android:layout_gravity="start"/>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"/>
+
+
+    </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

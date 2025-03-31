@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_menu"
+        android:icon="@drawable/home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/coupoun_menu"
+        android:icon="@drawable/coupoun"
+        android:title="Coupoun" />
+
+
+    <item
+        android:id="@+id/Booking_menu"
+        android:icon="@drawable/calendar_svgrepo_com"
+        android:title="Booking" />
+
+    <item
+        android:id="@+id/Profile_menu"
+        android:icon="@drawable/profile"
+        android:title="Profile" />
+
+</menu>
