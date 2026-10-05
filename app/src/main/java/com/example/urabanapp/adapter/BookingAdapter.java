@@ -24,7 +24,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
     private List<BookingModel> bookingList;
 
     // Constructor for the adapter
-    public BookingAdapter(Context context, List<com.example.urabanapp.model.BookingModel> bookingList) {
+    public BookingAdapter(Context context, List<BookingModel> bookingList) {
         this.context = context;
         this.bookingList = bookingList;
     }

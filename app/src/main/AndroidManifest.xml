@@ -15,11 +15,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity.ForgetPasswordActivity"
+            android:name=".activity.forget_passActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.SubcateActivity"
-            android:exported="false" />
+        <!-- <activity -->
+        <!-- android:name=".activity.ForgetPasswordActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".activity.OrderHistoryActivity"
             android:exported="false" />

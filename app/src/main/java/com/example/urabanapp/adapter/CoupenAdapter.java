@@ -54,7 +54,12 @@ public class CoupenAdapter extends RecyclerView.Adapter<CoupenAdapter.CoupenView
 
     @Override
     public int getItemCount() {
-        return coupenList.size();
+        try {
+            return coupenList.size();
+
+        }catch (Exception e){
+            return  0;
+        }
     }
 
     public static class CoupenViewHolder extends RecyclerView.ViewHolder {

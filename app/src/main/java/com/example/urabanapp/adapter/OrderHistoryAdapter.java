@@ -40,10 +40,10 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         this.clickListener = clickListener;
         this.context = context;
         steps=new ArrayList<>();
-        steps.add("Order Placed");
-        steps.add("Dispatched");
-        steps.add("Shipping");
-        steps.add("Delivered");
+        steps.add("Pending");
+        steps.add("On the way");
+        steps.add("Completed");
+//        steps.add("Delivered");
 
     }
 
@@ -82,11 +82,11 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
             }
         });
-        holder.step1.setSubtitle("Your Order has Received,Order Will be Dispatch within few Hours");
-        holder.step2.setSubtitle("Order dispatched from SOLEGLIDE's Warehouse");
-        holder.step3.setSubtitle("Order is being Shipped");
-        holder.step4.setSubtitle("Order is Out for delivery");
-        holder.step5.setSubtitle("Delieverd order");
+        holder.step1.setSubtitle("Your service has Pending");
+        holder.step2.setSubtitle("Partner assign from Allpro Assist");
+        holder.step3.setSubtitle("service as complete");
+//        holder.step4.setSubtitle("Order is Out for delivery");
+//        holder.step5.setSubtitle("Delieverd order");
 
 
 
@@ -97,16 +97,16 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         }else if(orderModel.getStatus()==2){
             holder.step2.setActive(true);
 
-        }else if(orderModel.getStatus()==3){
+        }else {
             holder.step3.setActive(true);
-
-        }else if(orderModel.getStatus()==4){
-            holder.step4.setActive(true);
-
-        }else{
-            holder.step5.setActive(true);
-
         }
+//        }else if(orderModel.getStatus()==4){
+//            holder.step4.setActive(true);
+//
+//        }else{
+//            holder.step5.setActive(true);
+//
+//        }
 
 
 
@@ -136,8 +136,8 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             step1=itemView.findViewById(R.id.step1);
             step2=itemView.findViewById(R.id.step2);
             step3=itemView.findViewById(R.id.step3);
-            step4=itemView.findViewById(R.id.step4);
-            step5=itemView.findViewById(R.id.step5);
+//            step4=itemView.findViewById(R.id.step4);
+//            step5=itemView.findViewById(R.id.step5);
             tracker=itemView.findViewById(R.id.tracker);
             orderCard=itemView.findViewById(R.id.orderCard);
 

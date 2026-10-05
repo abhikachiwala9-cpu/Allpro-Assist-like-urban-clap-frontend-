@@ -76,7 +76,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/non"
-
         android:orientation="vertical">
 
 
@@ -156,7 +155,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:drawableEnd="@drawable/baseline_arrow_forward_24"
+                    android:drawableEnd="@drawable/baseline_arrow_forward_black"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/primary"/>

@@ -5,8 +5,11 @@ import static android.app.PendingIntent.getActivity;
 import static java.security.AccessController.getContext;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -81,6 +84,8 @@ public class BookActivity extends AppCompatActivity implements PaymentResultList
 
     LinearLayout non,empty;
 
+    ArrayList<CoupenModel> coupon;
+
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,15 +109,17 @@ public class BookActivity extends AppCompatActivity implements PaymentResultList
         btnexplore=findViewById(R.id.btnexplore);
         tvall=findViewById(R.id.tvall);
 
+        Intent i1 = getIntent();
+        coupon = (ArrayList<CoupenModel>) i1.getSerializableExtra("coupon");
+
         btnexplore.setOnClickListener(v->{
             Intent intent = new Intent(this,NavigationActivity.class);
             startActivity(intent);
         });
 
         tvall.setOnClickListener(v->{
-            ArrayList<CoupenModel> coupenModels = (ArrayList<CoupenModel>) getIntent().getSerializableExtra("coupon");
             Intent intent = new Intent(this,CouponActivity.class);
-            intent.putExtra("coupon",coupenModels);
+            intent.putExtra("coupon",coupon);
             startActivity(intent);
         });
 
@@ -175,7 +182,7 @@ public class BookActivity extends AppCompatActivity implements PaymentResultList
                             +t3.getText().toString()+","
                             +t4.getText().toString()+","
                             +t5.getText().toString()+","
-                            +t6.getText().toString()+",";
+                            +t6.getText().toString();
 
 
                     tvadd.setText(addressstr);
@@ -234,26 +241,25 @@ public class BookActivity extends AppCompatActivity implements PaymentResultList
             }else{
                 c_o="online";
             }
-            if(Date.equals("Select Date")) {
+            if(Date.equalsIgnoreCase("Select Date")) {
 
                 Toast.makeText(this, "Please Select Date", Toast.LENGTH_SHORT).show();
 
-            } else if(time.equals("Select Time")) {
+            } else if(time.equalsIgnoreCase("Select time")) {
 
                 Toast.makeText(this, "Please Select Time", Toast.LENGTH_SHORT).show();
 
+            } else if (addressstr.trim().length() == 0) {
+                    Toast.makeText(this, "Please enter Address", Toast.LENGTH_SHORT).show();
             } else {
-
-                if (addressstr.trim().length() == 0) {
-                    Toast.makeText(this, "Please enter Adreess", Toast.LENGTH_SHORT).show();
+                if (c_o.equals("cash")) {
+                    new OrderApi().confirm_order(BookActivity.this, uid, addressstr, c_code, c_o, c_discount + "",Date,time);
                 } else {
-                    if (c_o.equals("cash")) {
-                        new OrderApi().confirm_order(BookActivity.this, uid, addressstr, c_code, "CASH", c_discount + "",Date,time);
-                    } else {
-                        openRazorPay();
-                    }
+                    openRazorPay();
                 }
             }
+
+
 
         });
 
@@ -391,7 +397,7 @@ public class BookActivity extends AppCompatActivity implements PaymentResultList
         JSONObject object = new JSONObject();
         try {
             // to put name
-            object.put("name", "SOLEGLIDE");
+            object.put("name", "Urban");
 
             // put description
             object.put("description", "Test payment");
@@ -418,12 +424,13 @@ public class BookActivity extends AppCompatActivity implements PaymentResultList
         }
     }
 
+
     @Override
     public void onPaymentSuccess(String s){
         SharedPreferences sp = getSharedPreferences(ConstantData.SP_NAME,MODE_PRIVATE);
         new OrderApi().confirm_order(BookActivity.this,
                 sp.getString(ConstantData.KEY_SP_USER_ID,"0"),
-                addressstr,c_code,"ONLINE",c_discount+"",Date,time);
+                addressstr,"ONLINE",c_code,c_discount+"",Date,time);
     }
 
     @Override
@@ -471,5 +478,7 @@ public class BookActivity extends AppCompatActivity implements PaymentResultList
 
         return true; // All inputs are valid
     }
+
+
 
 }

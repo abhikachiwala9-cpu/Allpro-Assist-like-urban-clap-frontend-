@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,13 +20,18 @@ import com.example.urabanapp.R;
 import com.example.urabanapp.api.Login_Register_Api;
 import com.example.urabanapp.utilites.ConstantData;
 import com.example.urabanapp.utilites.Validation;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText etmail,etpass;
+    EditText etmail;
     Button btnlogin;
     SharedPreferences sp;
     TextView tvreg,tvForgotPassword;
+    TextInputEditText etpass;
+    TextInputLayout layoutPass;
+    boolean isVisible = false;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,16 +45,29 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
         etmail=findViewById(R.id.etmail);
+        layoutPass=findViewById(R.id.layoutPass);
         etpass=findViewById(R.id.etpass);
         btnlogin=findViewById(R.id.btnlogin);
         tvreg=findViewById(R.id.tvreg);
         tvForgotPassword=findViewById(R.id.tvForgotPassword);
 
-
         tvForgotPassword.setOnClickListener(v->{
-            Intent intent = new Intent(this, ForgetPasswordActivity.class);
+            Intent intent = new Intent(this, forget_passActivity.class);
                 startActivity(intent);
                 finish();
+        });
+
+        layoutPass.setEndIconOnClickListener(v -> {
+            if (isVisible) {
+                etpass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                layoutPass.setEndIconDrawable(getResources().getDrawable(R.drawable.hidden));
+            } else {
+                etpass.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                layoutPass.setEndIconDrawable(getResources().getDrawable(R.drawable.eye));
+            }
+            isVisible = !isVisible;
+            etpass.setSelection(etpass.getText().length());
+
         });
 
         btnlogin.setOnClickListener(v->{

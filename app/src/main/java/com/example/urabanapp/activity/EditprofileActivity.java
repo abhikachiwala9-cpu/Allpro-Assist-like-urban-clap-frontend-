@@ -58,18 +58,59 @@ public class EditprofileActivity extends AppCompatActivity {
         etuser.setText(sp.getString(ConstantData.KEY_SP_USERNAME,""));
 
         btnupdate.setOnClickListener(v->{
-            String username=etuser.getText().toString();
-            String email=etmail.getText().toString();
-            String mobileno=etmobno.getText().toString();
+//            String username=etuser.getText().toString();
+//            String email=etmail.getText().toString();
+//            String mobileno=etmobno.getText().toString();
 
-            if(username.isEmpty() && email.isEmpty() && mobileno.isEmpty()){
-                Toast.makeText(this, "enter all data", Toast.LENGTH_SHORT).show();
-            }else{
-                new Login_Register_Api().editprofile(
+//            if(username.isEmpty() && email.isEmpty() && mobileno.isEmpty()){
+//                Toast.makeText(this, "enter all data", Toast.LENGTH_SHORT).show();
+//            }else{
+//                new Login_Register_Api().editprofile(
+//                        this,
+//                        new PersonModel(username,email,"",mobileno,"",uid)
+//                );
+//            }
+
+
+
+            String username = etuser.getText().toString().trim();
+            String email = etmail.getText().toString().trim();
+            String mobileno = etmobno.getText().toString().trim();
+
+            if (username.isEmpty()) {
+                etuser.setError("Enter valid username");
+                etuser.requestFocus();
+                return;
+            }
+
+            if (email.isEmpty()) {
+                etmail.setError("Enter valid email");
+                etmail.requestFocus();
+                return;
+            }
+
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                etmail.setError("Invalid email format");
+                etmail.requestFocus();
+                return;
+            }
+
+            if (mobileno.isEmpty()) {
+                etmobno.setError("Enter valid mobile number");
+                etmobno.requestFocus();
+                return;
+            }
+
+            if (mobileno.length() != 10) {
+                etmobno.setError("Mobile number must be 10 digits");
+                etmobno.requestFocus();
+                return;
+            }
+
+            new Login_Register_Api().editprofile(
                         this,
                         new PersonModel(username,email,"",mobileno,"",uid)
                 );
-            }
         });
     }
 }

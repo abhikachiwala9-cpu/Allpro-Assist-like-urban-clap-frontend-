@@ -75,15 +75,7 @@
                     tools:ignore="MissingClass" />
 
 
-                <ImageView
-                    android:id="@+id/changeProfilePicture"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@mipmap/camera"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/circleprofile"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.86" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

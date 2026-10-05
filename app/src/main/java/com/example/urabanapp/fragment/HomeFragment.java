@@ -37,6 +37,7 @@ import com.example.urabanapp.adapter.ServicesAdapter;
 import com.example.urabanapp.adapter.SubCategoryAdapter;
 import com.example.urabanapp.model.BannerModel;
 import com.example.urabanapp.model.CategoryModel;
+import com.example.urabanapp.model.CoupenModel;
 import com.example.urabanapp.model.ServicesModel;
 import com.example.urabanapp.model.SubcateModel;
 import com.example.urabanapp.utilites.ConstantData;
@@ -65,15 +66,16 @@ public class HomeFragment extends Fragment {
     Handler handler = new Handler();
     Runnable autoSlideRunnable;
     int currentPage = 1;
-
+    ArrayList<CoupenModel> coupon;
 
     ArrayList<SubcateModel> Sub_data;
 
-    public HomeFragment(ArrayList<BannerModel> banner, ArrayList<CategoryModel> category, ArrayList<ServicesModel> services, ArrayList<SubcateModel> subCategorymodels) {
+    public HomeFragment(ArrayList<BannerModel> banner, ArrayList<CategoryModel> category, ArrayList<ServicesModel> services, ArrayList<SubcateModel> subCategorymodels,ArrayList<CoupenModel> coupon) {
         this.banner = banner;
         this.category = category;
         this.services = services;
         this.Sub_data=subCategorymodels;
+        this.coupon = coupon;
     }
 
 //    public HomeFragment(ArrayList<BannerModel> banner, ArrayList<CategoryModel> category, ArrayList<ServicesModel> service, ArrayList<SubcateModel> subcate) {
@@ -126,7 +128,7 @@ public class HomeFragment extends Fragment {
         });
         imgcart.setOnClickListener(v->{
             Intent intent=new Intent(getActivity(), BookActivity.class);
-
+            intent.putExtra("coupon",coupon);
             getContext().startActivity(intent);
         });
 
@@ -144,6 +146,7 @@ public class HomeFragment extends Fragment {
         tvseecat.setOnClickListener(v->{
             Intent intent=new Intent(getActivity(), SeeCategoryActivity.class);
             intent.putExtra("subcate", Sub_data);
+            intent.putExtra("ser", services);
             getContext().startActivity(intent);
         });
 

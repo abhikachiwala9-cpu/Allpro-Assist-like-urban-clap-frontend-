@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.urabanapp.R;
+import com.example.urabanapp.utilites.CustomAlert;
 
 public class ThanksActivity extends AppCompatActivity {
 
@@ -25,14 +26,28 @@ public class ThanksActivity extends AppCompatActivity {
             return insets;
         });
 
+//        new CustomAlert(ThanksActivity.this,"Booked","Your Service Is Booked Successfully");
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent intent = new Intent(ThanksActivity.this, NavigationActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        },2000);
+
+        new CustomAlert(this,"Booked","Your service Is Booked Successfully");
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(ThanksActivity.this, NavigationActivity.class);
+                Intent intent = new Intent(ThanksActivity.this,NavigationActivity.class);
                 startActivity(intent);
                 finish();
             }
-        },2500);
+        },2900);
+
 
     }
 }

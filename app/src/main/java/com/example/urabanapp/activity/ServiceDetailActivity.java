@@ -84,8 +84,8 @@ public class ServiceDetailActivity extends AppCompatActivity {
         Uri uri = Uri.parse(ConstantData.SERVER_ADDRESS+model.getSr_video());
 
         video.setVideoURI(uri);
-        Toast.makeText(this, "URL: " + uri, Toast.LENGTH_SHORT).show();
-        Log.e("VID URL", uri.toString());
+//        Toast.makeText(this, "URL: " + uri, Toast.LENGTH_SHORT).show();
+//        Log.e("VID URL", uri.toString());
         video.setOnCompletionListener(v -> {
             video.start();
         });
@@ -110,6 +110,8 @@ public class ServiceDetailActivity extends AppCompatActivity {
         });
 
         btnbook.setOnClickListener(v->{
+
+            Toast.makeText(this, "getting cart", Toast.LENGTH_SHORT).show();
 
             new OrderApi().addOrder(this,
 

@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.urabanapp.activity.LoginActivity;
 import com.example.urabanapp.activity.NavigationActivity;
 import com.example.urabanapp.activity.OtpActivity;
+import com.example.urabanapp.activity.forget_passActivity;
 import com.example.urabanapp.model.PersonModel;
 import com.example.urabanapp.model.PersonOutputModel;
 import com.example.urabanapp.utilites.ConstantData;
@@ -197,6 +198,73 @@ public class Login_Register_Api {
                 map.put("email", model.getEmail());
                 map.put("mobileno", model.getMobileno());
                 map.put("uid", model.getId());
+                return map;
+            }
+        };
+        queue.add(request);
+    }
+
+
+    public void forgotPassword(Context context,String email,String mob,String pass) {
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                ConstantData.FORGOT_PASS_METHOD,
+                response -> {
+                    PersonOutputModel p = new Gson().fromJson(response,PersonOutputModel.class);
+                    if (p.isStatus()) {
+                        Toast.makeText(context, p.getMessage(), Toast.LENGTH_SHORT).show();
+                        context.startActivity(new Intent(context,LoginActivity.class));
+                        ((forget_passActivity)context).finish();
+                    } else {
+                        Toast.makeText(context, p.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Toast.makeText(context, "SERVER ERROR" + error, Toast.LENGTH_SHORT).show();
+                    Log.e("SERVER ERROR",error.toString());
+                }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<>();
+                map.put("email",email);
+                map.put("mobileno",mob);
+                map.put("password",pass);
+                return map;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void findUser(Context context,String email,String mob) {
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                ConstantData.FIND_USER_METHOD,
+                response -> {
+                    PersonOutputModel p = new Gson().fromJson(response,PersonOutputModel.class);
+                    if (p.isStatus()) {
+                        Toast.makeText(context, p.getMessage(), Toast.LENGTH_SHORT).show();
+                        ((forget_passActivity)context).set();
+                    } else {
+                        Toast.makeText(context, p.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Toast.makeText(context, "SERVER ERROR" + error, Toast.LENGTH_SHORT).show();
+                    Log.e("SERVER ERROR",error.toString());
+                }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<>();
+                map.put("email",email);
+                map.put("mobileno",mob);
                 return map;
             }
         };

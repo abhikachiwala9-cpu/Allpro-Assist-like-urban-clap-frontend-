@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvbooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bookings"
+
+        android:textColor="@color/primary"
+        android:textSize="30sp"
+        android:paddingStart="10dp"
+        android:paddingVertical="10dp"
+        android:fontFamily="@font/archivo_medium"
+
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/orderCard"
@@ -179,7 +194,7 @@
                         app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
 
 
-                        app:title="Order Placed"/>
+                        app:title="Pending"/>
 
                     <com.transferwise.sequencelayout.SequenceStep
                         android:layout_width="match_parent"
@@ -189,7 +204,7 @@
 
 
 
-                        app:title="Dispatched"/>
+                        app:title="On the way"/>
 
                     <com.transferwise.sequencelayout.SequenceStep
                         android:layout_width="match_parent"
@@ -199,26 +214,26 @@
 
 
 
-                        app:title="Shipping"
+                        app:title="Completed"
                         tools:ignore="MissingClass" />
 
-                    <com.transferwise.sequencelayout.SequenceStep
-                        android:layout_width="match_parent"
-                        android:id="@+id/step4"
-                        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+<!--                    <com.transferwise.sequencelayout.SequenceStep-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:id="@+id/step4"-->
+<!--                        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"-->
 
 
-                        android:layout_height="wrap_content"
-                        app:title="Out for Delivery"/>
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:title="Out for Delivery"/>-->
 
-                    <com.transferwise.sequencelayout.SequenceStep
-                        android:layout_width="match_parent"
-                        android:id="@+id/step5"
-                        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+<!--                    <com.transferwise.sequencelayout.SequenceStep-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:id="@+id/step5"-->
+<!--                        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"-->
 
 
-                        android:layout_height="wrap_content"
-                        app:title="Delivered"/>
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:title="Delivered"/>-->
 
 
                 </com.transferwise.sequencelayout.SequenceLayout>

@@ -1,5 +1,6 @@
 package com.example.urabanapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.urabanapp.R;
+import com.example.urabanapp.activity.OrderHistoryActivity;
 import com.example.urabanapp.adapter.BookingAdapter;
 import com.example.urabanapp.adapter.CoupenAdapter;
 import com.example.urabanapp.model.BookingModel;
@@ -25,13 +28,11 @@ import java.util.ArrayList;
 public class BookingFragment extends Fragment {
 
 
-//    RecyclerView rcylbooking;
-//    ArrayList<BookingModel> booking;
 
-//    public BookingFragment(ArrayList<BookingModel> booking) {
-//
-//        this.booking = booking;
-//    }
+    RecyclerView rcylbooking;
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,14 +45,13 @@ public class BookingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        rcylbooking=view.findViewById(R.id.rcylBookingHistory);
-//        getData();
+        rcylbooking=view.findViewById(R.id.rcylBookingHistory);
+        rcylbooking.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), OrderHistoryActivity.class);
+            startActivity(intent);
+        });
     }
 
-    public void getData() {
-        //code for coupon
-//        rcylbooking.setLayoutManager(new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL));
-//        rcylbooking.setAdapter(new BookingAdapter(booking));
-    }
+
 
 }

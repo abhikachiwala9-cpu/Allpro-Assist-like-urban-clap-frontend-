@@ -34,12 +34,19 @@ public class CouponActivity extends AppCompatActivity {
         });
 
 //        coupens=((NavigationActivity)getApplicationContext()).getCoupen();
+        try {
 
-        coupens = (ArrayList<CoupenModel>) getIntent().getSerializableExtra("coupon");
+            coupens = (ArrayList<CoupenModel>) getIntent().getSerializableExtra("coupon");
 
-        rcylCoupon=findViewById(R.id.rcylCoupon);
+            rcylCoupon=findViewById(R.id.rcylCoupon);
 
-        rcylCoupon.setLayoutManager(new LinearLayoutManager(this));
-        rcylCoupon.setAdapter(new CoupenAdapter(coupens));
+            rcylCoupon.setLayoutManager(new LinearLayoutManager(this));
+            rcylCoupon.setAdapter(new CoupenAdapter(coupens));
+
+        }catch (Exception e){
+
+        }
+
+
     }
 }

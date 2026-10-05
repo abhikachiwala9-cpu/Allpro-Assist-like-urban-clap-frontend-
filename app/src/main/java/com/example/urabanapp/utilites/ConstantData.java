@@ -3,7 +3,7 @@ package com.example.urabanapp.utilites;
 public class ConstantData {
 
     //API
-    public static final String SERVER_ADDRESS = "http://192.168.1.3:8000";
+    public static final String SERVER_ADDRESS = "http://192.168.1.4:8000";
     public static final String REGISTER_METHOD = SERVER_ADDRESS+"/api_register";
     public static final String LOGIN_METHOD =SERVER_ADDRESS+ "/api_login";
     public static final String DATA_METHOD =SERVER_ADDRESS+ "/api_data";
@@ -14,6 +14,8 @@ public class ConstantData {
     public static final String confirmOrder_METHOD =SERVER_ADDRESS+ "/api_confirmorder";
     public static final String GET_ORDER_HIS_METHOD =SERVER_ADDRESS+ "/api_getOrderhistory";
     public static final String EDIT_PROFILE_METHOD =SERVER_ADDRESS+ "/api_editprofile";
+    public static final String FIND_USER_METHOD =SERVER_ADDRESS+ "/api_finduser";
+    public static final String FORGOT_PASS_METHOD =SERVER_ADDRESS+ "/api_changepassword";
 
 
     //SHAREDPREFRENCES

@@ -39,7 +39,9 @@ public class NavigationActivity extends AppCompatActivity {
     public ArrayList<BannerModel> banner;
     public ArrayList<CategoryModel> category;
     public ArrayList<CoupenModel> coupon;
-//    public ArrayList<BookingModel> booking;
+    public ArrayList<BookingModel> Bookings;
+
+
 
     public ArrayList<PincodeModel> pincode;
     public ArrayList<ServicesModel> service;
@@ -75,11 +77,10 @@ public class NavigationActivity extends AppCompatActivity {
         bnv.show(1,true);
         bnv.setOnClickMenuListener(model -> {
             if (model.getId() == ID_HOME) {
-                addFragment(new HomeFragment(banner,category,service,Subcate));
+                addFragment(new HomeFragment(banner,category,service,Subcate,coupon));
             } else if (model.getId() == ID_COUP0N) {
                 addFragment(new CoupounFragment(coupon));
             }else if (model.getId() == ID_BOOKING) {
-                //addFragment(new BookingFragment());
                 startActivity(new Intent(this,OrderHistoryActivity.class));
             } else {
                 addFragment(new ProfileFragment());
@@ -111,7 +112,7 @@ public class NavigationActivity extends AppCompatActivity {
         service=data.getService_data();
         Subcate=data.getSubcat_data();
 
-        addFragment(new HomeFragment(banner,category,service,Subcate));
+        addFragment(new HomeFragment(banner,category,service,Subcate,coupon));
     }
 
     public ArrayList<CoupenModel> getCoupen(){

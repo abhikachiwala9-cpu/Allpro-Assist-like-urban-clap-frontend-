@@ -2,6 +2,7 @@ package com.example.urabanapp.api;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.urabanapp.activity.BookActivity;
 import com.example.urabanapp.activity.NavigationActivity;
 import com.example.urabanapp.activity.OrderHistoryActivity;
+import com.example.urabanapp.activity.ServiceDetailActivity;
 import com.example.urabanapp.activity.ThanksActivity;
 import com.example.urabanapp.model.BookingModel;
 import com.example.urabanapp.model.BookingOutputModel;
@@ -32,8 +34,6 @@ public class OrderApi {
 
     public void addOrder(Context context, BookingModel model){
 
-
-
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest request=new StringRequest(
                 Request.Method.POST,
@@ -42,14 +42,17 @@ public class OrderApi {
                     try {
                         BookingOutputModel booking = new Gson().fromJson(response,BookingOutputModel.class);
                         if(booking.isStatus()){
-                            Toast.makeText(context, "Booking Sucess", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(context, BookActivity.class);
-                            context.startActivity(intent);
+
+                            Toast.makeText(context, "Add to Cart", Toast.LENGTH_SHORT).show();
+
+//                            Intent intent = new Intent(context, BookActivity.class);
+////                            context.startActivity(intent);
+////                           ((ServiceDetailActivity)context).finish();
                         }
                     }catch (Exception e){
-                        Toast.makeText(context, "Booking Sucess", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(context, BookActivity.class);
-                        context.startActivity(intent);
+//                        Toast.makeText(context, "Booking Sucess", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(context, BookActivity.class);
+//                        context.startActivity(intent);
                     }
 
                 },
@@ -149,11 +152,6 @@ public class OrderApi {
     }
 
 
-
-
-
-
-
 //    public void  removebooking(Context context, String id,String uid) {
 //
 //        RequestQueue queue = Volley.newRequestQueue(context);
@@ -250,6 +248,51 @@ public class OrderApi {
         queue.add(request);
     }
 
+//    public void confirm_order(Context context, String uid,String address,String c_o,String c_code,String c_discount,String date,String time){
+//
+//        CustomProgressDialog customProgressDialog=new CustomProgressDialog(context);
+//        customProgressDialog.show();
+//
+//
+//        RequestQueue requestQueue= Volley.newRequestQueue(context);
+//        StringRequest stringRequest=new StringRequest(Request.Method.POST, ConstantData.confirmOrder_METHOD, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                customProgressDialog.dismiss();
+//                BookingOutputModel p= new Gson().fromJson(response,BookingOutputModel.class);
+//                if(p.isStatus()){
+//                    Intent intent=new Intent(context, ThanksActivity.class);
+//                    context.startActivity(intent);
+//                }else{
+//                    Toast.makeText(context, p.getMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError volleyError) {
+//                customProgressDialog.dismiss();
+//                Toast.makeText(context, "error:"+volleyError.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        }){
+//            @Nullable
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                HashMap<String,String> map=new HashMap<>();
+//                map.put("uid",uid);
+//                map.put("address",address);
+//                map.put("c_o",c_o);
+//                map.put("c_code",c_code);
+//                map.put("c_discount",c_discount);
+//                map.put("date",date);
+//                map.put("time",time);
+//                return map;
+//            }
+//        };
+//        requestQueue.add(stringRequest);
+//    }
+
+
     public void confirm_order(Context context, String uid,String address,String c_code,String c_o,String c_discount,String date,String time){
 
         CustomProgressDialog customProgressDialog=new CustomProgressDialog(context);
@@ -265,6 +308,7 @@ public class OrderApi {
                 if(p.isStatus()){
                     Intent intent=new Intent(context, ThanksActivity.class);
                     context.startActivity(intent);
+
                 }else{
                     Toast.makeText(context, p.getMessage(), Toast.LENGTH_SHORT).show();
                 }

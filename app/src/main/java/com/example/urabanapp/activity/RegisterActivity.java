@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -39,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnsend;
     SharedPreferences sp;
     String fullname,mobno,pass,email,conpass;
+    TextView tvlog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,12 @@ public class RegisterActivity extends AppCompatActivity {
         etpass=findViewById(R.id.etpass);
         etconpass=findViewById(R.id.etconpass);
         btnsend=findViewById(R.id.btnsend);
+        tvlog=findViewById(R.id.tvlog);
+
+        tvlog.setOnClickListener(v->{
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        });
 
         btnsend.setOnClickListener(v -> {
              fullname=etname.getText().toString().trim();
